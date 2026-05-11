@@ -5,88 +5,84 @@ from utils.html_parser import extract_sections
 from utils.section_diff import compare_sections
 from utils.prompt_builder import build_prompt
 from utils.llm_client import call_llm
-from utils.get_base_url import (get_base_url,detect_product_name)
+from utils.get_base_url import get_base_url
 
 def write_output(output_path, data):
+    print("Inside write_output function")
+    print(output_path)
+    
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
 
-    # Compare
+
+def main():
+
+    old_path = os.getenv("OLD_FILE_PATH")
+    new_path = os.getenv("NEW_FILE_PATH")
+    output_path = os.getenv("OUTPUT_PATH")
+
+    print("Inside Main function")
+    print(output_path)
+    # New article case
+    if not old_path or not os.path.exists(old_path):
+
+        output = {
+            "added": True,
+            "summary": "New article added"
+        }
+
+        write_output(output_path, output)
+
+        print("New article detected.")
+        return
+
+    # Extract sections
+    old_sections = extract_sections(old_path)
+    new_sections = extract_sections(new_path)
+
+    # Generate section-aware diff
     changes_text = compare_sections(
         old_sections,
         new_sections
     )
 
+    
+    print("Generated section differences:")
+    print(changes_text)
+    
     # No changes
     if not changes_text.strip():
 
         output = {
-            "title": title,
-            "source_name": source_name,
-            "commit_id": target_commit,
-            "link": base_url,
-            "what_changed": "No changes detected",
-            "product_name": product_name,
-            "tag": tag
+            "added": False,
+            "summary": "No changes detected"
         }
 
-        write_output(output_file, output)
+        write_output(output_path, output)
+
+        print("No changes detected.")
         return
 
     # Build prompt
     prompt = build_prompt(changes_text)
 
-    # LLM summary
+    # Call LLM
     summary = call_llm(prompt)
 
+    # Save output
     output = {
-        "title": title,
-        "source_name": source_name,
-        "commit_id": target_commit,
-        "link": base_url,
+        "title":"",
+        "source_name":"",
+        "commit_id":"",
+        "link": "",
         "what_changed": summary,
-        "product_name": product_name,
-        "tag": tag
+        "product_name": "",
+        "tag": "",
     }
 
-    write_output(output_file, output)
+    write_output(output_path, output)
 
-
-
-def main():
-
-    data = load_input_json()
-
-    output_dir = os.getenv("OUTPUT_PATH")
-
-    for item in data:
-
-        source_name = item.get("name")
-        target_commit = item.get("TargetCommit")
-
-        exported_files = item.get("ExportedFiles", [])
-        old_files = item.get("ExportedOldFiles", [])
-        new_files = item.get("ExportedNewFiles", [])
-
-        for index, new_file in enumerate(new_files, start=1):
-
-            old_file = get_old_file(new_file, old_files)
-
-            output_filename = f"output_{index}.json"
-            output_file = os.path.join(
-                output_dir,
-                output_filename
-            )
-
-            process_article(
-                source_name,
-                target_commit,
-                exported_files,
-                old_file,
-                new_file,
-                output_file
-            )
-
-            print(f"Processed: {new_file}")
-
+    print("Processing complete.")
 
 
 if __name__ == "__main__":
