@@ -32,3 +32,19 @@ SECTION DIFFERENCES:
 
 {changes_text}
 """
+
+def build_prompt_for_new_article(new_sections):
+
+    return f"""You are analyzing a newly added product documentation article.
+
+    You are given the section-wise content of the newly added article.
+
+    Generate a detailed human-readable summary explaining what the article is about.
+
+    Do not give any heading to the output.
+
+    SECTION WISE CONTENT OF THE NEW ARTICLE:
+    {new_sections}
+"""
+
+
