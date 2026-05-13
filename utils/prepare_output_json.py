@@ -1,7 +1,7 @@
 import os
 import json
 from pathlib import Path
-from utils.get_base_url import (detect_product_name,get_base_url)
+from utils.get_base_url import (detect_product_name,get_base_url,get_base_url_release_notes)
 from utils.html_parser import extract_title, extract_sections
 from utils.section_diff import compare_sections
 from utils.prompt_builder import build_prompt,build_prompt_for_new_article
@@ -100,6 +100,9 @@ def prepare_output_json():
 
         # Check release in path
         contains_release = "release" in new_file_lower
+
+        if contains_release:
+            output_json["link"] = get_base_url_release_notes(output_json["product_name"])
 
         # Compare filenames if old file exists
         if old_file:

@@ -8,7 +8,7 @@ def write_output(output_path, data):
 
 
 def main():
-    output_path = os.getenv("OUTPUT_PATH")
+    output_path = os.getenv("SOURCE_PROCESSED_FILE_PATH")
 
     result_json = prepare_output_json()    
     write_output(output_path, result_json)

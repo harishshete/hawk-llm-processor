@@ -1,0 +1,9 @@
+{
+  "title": "Using the Auditing Message Policy",
+  "source_name": "basic-git",
+  "commit_id": "e9a6fc221c7f32e3d9393a34170f3fe9860038d0",
+  "link": null,
+  "what_changed": "After activating a policy, it might be necessary to restart the PMCM container in order for the changes to become effective. This action should be taken after attempting to apply the policy and confirming that it does not take effect without the container being restarted.",
+  "product_name": null,
+  "tag": "release_notes"
+}

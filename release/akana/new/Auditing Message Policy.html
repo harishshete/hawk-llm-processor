@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_Side_Navigation_Akana" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-toc-path="API Gateway|Policies|Operational Policies" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" xmlns="http://www.w3.org/1999/xhtml" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" /><title>Auditing Message</title>
+        <!-- The following scrlipt implements the Top button on long pages -->
+        <!-- End Top button script -->
+        <!-- Removes highlight from URL -->
+        <!-- End highlight script -->
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/perforce.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.previous-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.next-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../Resources/Stylesheets/akanadoc.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script>/* <![CDATA[ */        /*The following script overrides topic title in browser tab*/
+			document.title = Akana Documentation | 2026.1;
+		/* ]]> */</script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/scroll-button.js">
+        </script>
+        <script type="text/javascript">
+			///*<![CDATA[*/
+			document.addEventListener("DOMContentLoaded", function () {
+			document.body.addEventListener("click", function (e) {
+			var el = e.target;
+			// Traverse up to the button in case an inner div was clicked
+			while (el && el !== document.body) {
+			if (el.classList && el.classList.contains("remove-highlight-button")) {
+			// Delay to let the skin remove highlights
+			setTimeout(function () {
+			if (window.location.search.includes("Highlight=")) {
+			var url = new URL(window.location.href);
+			url.searchParams.delete("Highlight");
+			window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+			}
+			}, 50);
+			break;
+			}
+			el = el.parentNode;
+			}
+			});
+			});
+		///*]]>*/</script>
+        <script>/* <![CDATA[ */        /*The following script implements Google Analytics for two Akana accounts*/
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-333097-1', 'auto');
+			ga('create', 'UA-111257570-9', 'auto', 'akanaDocsTracker');
+			ga('send', 'pageview');
+			ga('akanaDocsTracker.send', 'pageview');
+		/* ]]> */</script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/scroll-button.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../Home.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="How can we help you?" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div id="skin-heading">Akana Documentation | 2026.1</div>
+                                    <script type="text/javascript">/*<![CDATA[*/
+            $(document).ready(function(){
+            $("#skin-heading").appendTo("div.logo-wrapper"); 
+            });
+        /*]]>*/</script>
+                                    <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolbar mc-component nocontent" style="mc-topic-toolbar-items: ExpandAll Print RemoveHighlight NextTopic PreviousTopic Forward Back;">
+                                        <div class="button-group-container-left">
+                                            <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all sections" title="Expand all sections" data-state1-title="Expand all sections">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie remove-highlight-button" title="Remove highlighting">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie print-button" title="Print">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Print">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie previous-topic-button" title="Go to previous topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate previous">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie next-topic-button" title="Go to next topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate next">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="nocontent">
+                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True">
+                                        </div>
+                                    </div>
+                                    <div class="sidenav-content">
+                                        <div role="main" id="mc-main-content">
+                                            <div class="documentation" xmlns="http://www.w3.org/1999/xhtml">
+                                                <div class="concept"><a name="aanchor1055" xmlns=""></a>
+                                                    <MadCap:concept term="AG;Exclude_API" />
+                                                </div>
+                                                <h1 id="top" data-mc-autonum=""><span class="autonumber" xmlns=""><span></span></span>Using the Auditing Message Policy</h1>
+                                                <p>Learn how to use the Auditing Message Policy.</p>
+                                                <p>For information about using policies in the context of the Community Manager developer portal, see <a href="../../cm/learnmore/bus_admin_organizations.htm#h_business_policies">Business Policies</a>.</p>
+                                                <p class="toc_title" xmlns="http://www.w3.org/1999/xhtml">On this page:</p>
+                                                <ul class="table_of_contents">
+                                                    <li><a href="#configuration">Configuration</a>
+                                                    </li>
+                                                    <li><a href="#policy_activating">Activating a policy</a>
+                                                    </li>
+                                                    <li><a href="#policy_attach">Attaching a policy</a>
+                                                    </li>
+                                                    </li>
+                                                    <li><a href="#restart_container">Restart PMCM container</a>
+                                                    </li>                                                    
+                                                </ul>
+                                                <h2 id="configuration">Configuration</h2>
+                                                <p>You can add or modify values for an existing auditing message policy on the <strong>Modify Auditing Message Policy</strong> page.</p>
+                                                <p class="Note"><strong>Note</strong>: To add an auditing message policy, use the <strong>Add Policy Wizard</strong>.</p>
+                                                <p>For information about using policies in the context of the Community Manager developer portal, see <a href="../../cm/learnmore/bus_admin_organizations.htm#h_business_policies">Business Policies</a>.</p>
+                                                <h4 data-mc-autonum=""><span class="autonumber" xmlns=""><span></span></span>To modify an auditing message policy</h4>
+                                                <ol>
+                                                    <li value="1">Enter the following navigation path: <strong>Workbench</strong> &gt; <strong>Browse</strong> &gt; <strong>Organization</strong>. Select the <strong>Policies</strong> folder. The <strong>Policies Summary</strong> screen displays.</li>
+                                                    <li value="2">To navigate to the <strong>Policy Details</strong> tab, click the policy name, double-click the <strong>Auditing Message Policy</strong> line item, or select <strong>View Policy Details</strong> from the <strong>Actions</strong> drop-down list box. The <strong>Policy Details</strong> information for the <strong>Auditing Message Policy</strong> is displayed.</li>
+                                                    <li value="3">To modify the policy, navigate to the <strong>Auditing Message Policy</strong> portlet and click the <strong>Modify</strong> link. The <strong>Modify Auditing Message Policy</strong> screen displays. For information about the fields and options, see <a href="#auditing_message_policy_options">Auditing Message Policy Options</a> below.</li>
+                                                    <li value="4">Add or modify values as needed. When done, click <strong>Apply</strong>. The system returns to the <strong>Policies Summary</strong> screen.</li>
+                                                </ol>
+                                                <h2 id="auditing_message_policy_options">Auditing Message Policy Options</h2>
+                                                <p>The <strong>Modify Auditing Message Policy</strong> page is organized as shown below.</p>
+                                                <p><strong>Modify Auditing Message Policy page (top and bottom)</strong>
+                                                </p>
+                                                <p>
+                                                    <img src="images/auditing_message_policy_1.jpg" alt="Modify Auditing Message Policy page, top" />
+                                                </p>
+                                                <p>
+                                                    <img src="images/auditing_message_policy_2.jpg" alt="Modify Auditing Message Policy page, bottom" />
+                                                </p>
+                                                <p>Here, you can specify values for the auditing message policy, as explained below.</p>
+                                                <p><strong>Label</strong>—Specify a short, clear name for the recorded content in the audit record.</p>
+                                                <p><strong>Audited Content</strong>
+                                                </p>
+                                                <ul>
+                                                    <li><strong>Entire Message</strong>—Audits all message exchanges.</li>
+                                                    <li><strong>Filter Audited Content</strong>—Allows filtering of a subset of messages based on one or more <a href="policy_management.htm#policies_xpath">XPath</a>, <a href="policy_management.htm#policies_jsonpath">JSONPath</a>, or <a href="policy_management.htm#policies_regex">Regular Expression</a> filters. Specify one or more expressions that audited messages must satisfy. Click <strong>Add</strong> or <strong>Delete</strong> to add or delete rows in the table.
+	<p class="Note"><strong>Note</strong>: Use XPath only with XML payloads. Use JSONPath only with JSON messages. Use RegEx if the content type is neither XML nor JSON.</p></li>
+                                                </ul>
+                                                <p><strong>Mask Message Content</strong>—Allows you to specify mask characters and XPath for message content you would like to hide. The <strong>Namespace Prefixes</strong> table allows you to enter one or more Namespace Prefix expressions for filtering messages. The table includes <strong>Prefix</strong> and <strong>Namespace</strong> table cells. The table cells are editable. Define the mask and then click <strong>Add</strong> to define one or more expressions.</p>
+                                                <ul>
+                                                    <li><strong>Mask</strong>—Allows you to specify characters that are used to mask (hide) content that matches the specified expression. The default mask is <strong>******</strong>.</li>
+                                                    <li><strong>Language/Expression</strong>—Specify one or more <a href="policy_management.htm#policies_xpath">XPath</a>, <a href="policy_management.htm#policies_jsonpath">JSONPath</a>, or <a href="policy_management.htm#policies_regex">Regular Expression</a> filters. Click <strong>Add</strong> or <strong>Delete</strong> to add or delete rows in the table.
+		<p class="Note"><strong>Note</strong>: Use XPath only with XML payloads. Use JSONPath only with JSON messages. Use RegEx if the content type is neither XML nor JSON.</p></li>
+                                                </ul>
+                                                <p><strong>Namespace Prefixes</strong>—Allows you to specify one or more expressions that audited messages must satisfy. Add or delete rows as needed.</p>
+                                                <ul>
+                                                    <li><strong>Prefix</strong>—Specify the prefix of the namespace used in the expression.</li>
+                                                    <li><strong>Namespace</strong>—Specify the namespace associated with the prefix.</li>
+                                                </ul>
+                                                <h2 id="policy_activating">Activating a policy</h2>
+                                                <p>When you create and configure a policy, the policy is in <strong>Draft</strong> state. When the policy configuration is complete, activate the policy: click <strong>Activate Policy</strong> and then confirm. See <a href="policy_management.htm#policy_activate">Activate a Policy</a>.</p>
+                                                <p>A policy in Draft state is not available for general use. Once you activate the policy, it is in <strong>Active</strong> state and is available for use.</p>
+                                                <h2 id="policy_attach">Attaching a policy</h2>
+                                                <p>To use the policy, go to the <strong>Policies</strong> folder in the respective organization and attach the policy to a web service, binding, or binding operation.</p>
+                                                <h2 id="restart_container">Restart PMCM container</h2>
+                                                <p> Once the policy is activated, you may need to restart the PMCM container for the changes to take effect.</p>
+                                                <p> First perrform the provisioning and see if policy takes effect, if it does not then restart the PMCM container.</p>                                             
+                                                <h2 id="related_topics">Related Topics</h2>
+                                                <div class="relatedlinks" id="policies">
+                                                    <ul>
+                                                        <li><a href="about_policies_view.htm">About Policies</a>
+                                                        </li>
+                                                        <li><a href="policy_management.htm">Managing Policies</a>
+                                                        </li>
+                                                        <li><a href="policies_operational_about.htm">About Operational Policies</a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li><a href="../../cm/learnmore/basics_glossary.htm">Glossary of Terms for the Community Manager developer portal</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript" src="../../Resources/google-code-prettify/prettify.js">
+                                    </script>
+                                    <script type="text/javascript">/* <![CDATA[ */
+    // hookup prettify
+    $("pre.programlisting").each(function () {
+      var $this = $(this),
+          lang = $this.attr("lang");
+      if (lang) {
+        $this.addClass("lang-" + lang);
+       // if (lang !== "bash") 
+		// {
+        $this.addClass("prettyprint");
+        //}
+      }
+    });
+    window.prettyPrint();
+    /* ]]> */</script>
+                                    <!-- The following script adds a resize bar to the navigation pane -->
+                                    <script type="text/javascript" src="../../Resources/Scripts/nav-resize.js">
+                                    </script>
+                                    <!-- End resize bar script -->
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
