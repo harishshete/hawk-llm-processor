@@ -72,7 +72,7 @@ def generate_summary_of_new_article(new_file):
 
 
 def prepare_output_json():
-    file_path = os.getenv("FILE_PATH")
+    file_path = os.getenv("SOURCE_RESULT")
     #print(file_path)
     with open(file_path, "r") as file:
         data = json.load(file)
