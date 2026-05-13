@@ -8,6 +8,7 @@ def write_output(output_path, data):
 
 
 def main():
+    print("LLM Gateway started...")
     output_path = os.getenv("SOURCE_SHARED_VOLUME_PATH")
 
     result_json = prepare_output_json()    
