@@ -8,6 +8,7 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     curl \
     ca-certificates \
+    zstd \
     libxml2-dev \
     libxslt1-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -18,9 +19,8 @@ COPY requirements.txt .
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Ollama for Linux and pull the model ahead of runtime
+# Install Ollama for Linux
 RUN curl -sSL https://ollama.com/install.sh | sh
-RUN ollama pull maxkerkula/megabeam-mistral-7b-512k-q6_k_l:latest
 
 # Copy the entire project into the container
 COPY . .
