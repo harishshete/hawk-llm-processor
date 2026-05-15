@@ -1,0 +1,9 @@
+{
+  "title": "Using the Auditing Message Policy",
+  "source_name": "basic-git",
+  "commit_id": "e9a6fc221c7f32e3d9393a34170f3fe9860038d0",
+  "link": "https://help.akana.com/release_notes/current/2026.1.0/Major_Release_2026.1.html",
+  "what_changed": "The new article introduces an additional step to activate the Auditing Message Policy. After attaching and activating the policy, it is necessary to restart the PMCM container for the changes to become effective. This was not mentioned in the old version of the documentation.",
+  "product_name": "akana",
+  "tag": "release_notes"
+}

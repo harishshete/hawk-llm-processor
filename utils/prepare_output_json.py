@@ -1,3 +1,4 @@
+import requests
 import os
 import json
 from pathlib import Path
@@ -73,10 +74,13 @@ def generate_summary_of_new_article(new_file):
 
 def prepare_output_json():
     file_path = os.getenv("SOURCE_RESULT")
-    #print(file_path)
+
+    '''
     with open(file_path, "r") as file:
         data = json.load(file)
-    
+    '''
+    data = json.loads(file_path)
+
     output_json["source_name"] = data[0].get("name")
     output_json["commit_id"] = data[0].get("TargetCommit")
     output_json["product_name"] = detect_product_name(data[0].get("ExportedNewFiles")[0])

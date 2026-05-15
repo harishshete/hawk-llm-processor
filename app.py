@@ -1,19 +1,18 @@
 import os
 import json
+from utils.push_in_db import push_to_db
 from utils.prepare_output_json import prepare_output_json
-
-def write_output(output_path, data):    
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2)
 
 
 def main():
-    print("LLM Gateway started...")
-    output_path = os.getenv("SOURCE_SHARED_VOLUME_PATH")
+    print("hawk LLM processor started...")
 
+    print("Preparing output JSON...")
     result_json = prepare_output_json()    
-    write_output(output_path, result_json)
-    
+    print("Output JSON prepared successfully.")
+
+    print("Pushing results to the database...")
+    push_to_db(result_json)
 
 
 if __name__ == "__main__":
