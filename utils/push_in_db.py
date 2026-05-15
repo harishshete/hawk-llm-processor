@@ -1,7 +1,7 @@
 import requests
 
 def push_to_db(data):
-    url = "http://localhost:3000/api/document/create"
+    url = "http://hawk.k8s.net/api/document/create"
     headers = {
         "Content-Type": "application/json"
     }
