@@ -73,22 +73,35 @@ def generate_summary_of_new_article(new_file):
 
 
 def prepare_output_json():
-    file_path = os.getenv("SOURCE_RESULT")
+    source_result = os.getenv("SOURCE_RESULT")
+    
+    # Try to parse as JSON first, if that fails, treat as file path
+    try:
+        payload = json.loads(source_result)
+    except (json.JSONDecodeError, TypeError):
+        # SOURCE_RESULT is a file path, read the file
+        with open(source_result, "r") as file:
+            payload = json.load(file)
+    
+    # Extract git diff data - handle both old array format and new nested format
+    if isinstance(payload, list):
+        # Old format: array of objects
+        data = payload[0]
+    elif "gitDiff" in payload:
+        # New format: object with nested gitDiff
+        data = payload["gitDiff"]
+    else:
+        # Fallback: treat payload as data directly
+        data = payload
 
-    '''
-    with open(file_path, "r") as file:
-        data = json.load(file)
-    '''
-    data = json.loads(file_path)
-
-    output_json["source_name"] = data[0].get("name")
-    output_json["commit_id"] = data[0].get("TargetCommit")
-    output_json["product_name"] = detect_product_name(data[0].get("ExportedNewFiles")[0])
+    output_json["source_name"] = data.get("name")
+    output_json["commit_id"] = data.get("targetCommit") or data.get("TargetCommit")
+    output_json["product_name"] = detect_product_name(data.get("exportedNewFiles", data.get("ExportedNewFiles", []))[0])
     output_json["link"] = get_base_url(output_json["product_name"])
     
     
-    new_files = data[0].get("ExportedNewFiles", [])
-    old_files = data[0].get("ExportedOldFiles", [])
+    new_files = data.get("exportedNewFiles", data.get("ExportedNewFiles", []))
+    old_files = data.get("exportedOldFiles", data.get("ExportedOldFiles", []))
 
     new_file = new_files[0] if new_files else None
     old_file = old_files[0] if old_files else None
