@@ -1,8 +1,9 @@
+import os
 import requests
 
-api_server = "hawk-apiserver-svc:3000"
-
 def push_to_db(data):
+    print("Pushing processed documents to the database...")
+    api_server = os.getenv("API_SERVER", "hawk-apiserver-svc:3000")
     url = f"http://{api_server}/api/document/create"
     headers = {
         "Content-Type": "application/json"

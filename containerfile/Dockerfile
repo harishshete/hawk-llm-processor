@@ -31,9 +31,10 @@ RUN curl -sSL https://ollama.com/install.sh | sh
 COPY . .
 
 # Set environment variables (can be overridden at runtime)
-ENV FILE_PATH="/app/release/akana/inputJson/input.json"
+ENV SOURCE_RESULT="/app/release/akana/inputJson/input.json"
 ENV SOURCE_PROCESSED_FILE_PATH="/app/release/akana/output/output.json"
 ENV MODEL_NAME="maxkerkula/megabeam-mistral-7b-512k-q6_k_l:latest"
+ENV API_SERVER="hawk-apiserver-svc:3000"
 
 # Expose Ollama default port
 EXPOSE 11434

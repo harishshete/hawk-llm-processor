@@ -7,7 +7,7 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 def call_llm(prompt):
 
     model = os.getenv("MODEL_NAME")
-
+    print(f"Using model: {model}")
     response = requests.post(
         OLLAMA_URL,
         json={

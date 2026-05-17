@@ -75,13 +75,14 @@ def generate_summary_of_new_article(new_file):
 def prepare_output_json():
     source_result = os.getenv("SOURCE_RESULT")
     
-    # Try to parse as JSON first, if that fails, treat as file path
+    if not source_result:
+        raise ValueError("SOURCE_RESULT environment variable is not set")
+    
+    # Parse as JSON
     try:
         payload = json.loads(source_result)
-    except (json.JSONDecodeError, TypeError):
-        # SOURCE_RESULT is a file path, read the file
-        with open(source_result, "r") as file:
-            payload = json.load(file)
+    except (json.JSONDecodeError, TypeError) as e:
+        raise ValueError(f"SOURCE_RESULT must be valid JSON: {e}") from e
     
     # Extract git diff data - handle both old array format and new nested format
     if isinstance(payload, list):
