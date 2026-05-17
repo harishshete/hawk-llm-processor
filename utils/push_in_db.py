@@ -1,7 +1,9 @@
 import requests
 
+api_server = "hawk-apiserver-svc:3000"
+
 def push_to_db(data):
-    url = "http://hawk.k8s.net/api/document/create"
+    url = f"http://{api_server}/api/document/create"
     headers = {
         "Content-Type": "application/json"
     }
