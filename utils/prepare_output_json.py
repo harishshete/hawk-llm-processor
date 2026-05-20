@@ -20,6 +20,37 @@ output_json = {
 }
 
 
+def _fallback_summary_for_changes(changes_text):
+    lines = [line.strip() for line in changes_text.splitlines() if line.strip()]
+    section_count = sum(1 for line in lines if line.startswith("SECTION:"))
+    added_count = sum(1 for line in lines if line.startswith("ADDED:") or line.startswith("ADDED SECTION:"))
+    removed_count = sum(1 for line in lines if line.startswith("REMOVED:") or line.startswith("REMOVED SECTION:"))
+    modified_count = sum(1 for line in lines if line.startswith("OLD:"))
+
+    return (
+        "Automatic summary generated without LLM due to a temporary model/service error. "
+        f"Detected changes across {section_count} section(s): "
+        f"{modified_count} modified line pair(s), {added_count} addition(s), and {removed_count} removal(s)."
+    )
+
+
+def _fallback_summary_for_new_article(new_sections):
+    section_names = [name for name in new_sections.keys() if str(name).strip()]
+    section_count = len(section_names)
+    preview_sections = ", ".join(section_names[:3])
+    if preview_sections:
+        return (
+            "Automatic summary generated without LLM due to a temporary model/service error. "
+            f"The article appears to be newly added and contains {section_count} section(s), "
+            f"including: {preview_sections}."
+        )
+
+    return (
+        "Automatic summary generated without LLM due to a temporary model/service error. "
+        "The article appears to be newly added."
+    )
+
+
 def generate_summary_of_changes(old_file, new_file):
     # Extract sections
     old_sections = extract_sections(old_file)
@@ -43,6 +74,7 @@ def generate_summary_of_changes(old_file, new_file):
 
         #write_output(output_path, output)
 
+        output_json["what_changed"] = "No changes detected"
         print("No changes detected.")
         return
 
@@ -50,7 +82,11 @@ def generate_summary_of_changes(old_file, new_file):
     prompt = build_prompt(changes_text)
 
     # Call LLM
-    summary = call_llm(prompt)
+    try:
+        summary = call_llm(prompt)
+    except Exception as exc:
+        print(f"LLM summarization failed, using fallback summary: {exc}")
+        summary = _fallback_summary_for_changes(changes_text)
 
     output_json["what_changed"] = summary
 
@@ -66,7 +102,11 @@ def generate_summary_of_new_article(new_file):
     prompt = build_prompt_for_new_article(new_sections)
 
     # Call LLM
-    summary = call_llm(prompt)
+    try:
+        summary = call_llm(prompt)
+    except Exception as exc:
+        print(f"LLM summarization failed, using fallback summary: {exc}")
+        summary = _fallback_summary_for_new_article(new_sections)
 
     output_json["what_changed"] = summary
 
