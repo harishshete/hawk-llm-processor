@@ -1,3 +1,4 @@
 /files
 requirements.txt
-utils/write_to_local.py
+utils/write_to_local.py__pycache__/
+*.pyc
