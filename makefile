@@ -6,11 +6,12 @@ IMAGE := $(REGISTRY)/hawk-llm
 DOCKERFILE := containerfile/Dockerfile
 PYTHON := python3
 
-.PHONY: help install build-image push-image release clean
+.PHONY: help install compile-pyc build-image push-image release clean
 
 help:
 	@echo "Available targets:"
 	@echo "  make install      - Install Python dependencies"
+	@echo "  make compile-pyc  - Precompile project Python files into .pyc"
 	@echo "  make build-image  - Build container image and tag $(IMAGE):$(VERSION), $(IMAGE):latest"
 	@echo "  make push-image   - Push both image tags to Docker registry"
 	@echo "  make release      - Build image and push both tags"
@@ -20,7 +21,11 @@ install:
 	$(PYTHON) -m pip install -r requirements.txt
 	@echo "Python dependencies installed"
 
-build-image:
+compile-pyc:
+	$(PYTHON) -m compileall -q app.py utils
+	@echo "Generated Python bytecode for project files"
+
+build-image: compile-pyc
 	docker buildx build \
 		--load \
 		-f $(DOCKERFILE) \
