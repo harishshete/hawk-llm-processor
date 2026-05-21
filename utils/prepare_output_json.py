@@ -75,9 +75,8 @@ def generate_summary_of_changes(old_file, new_file):
 
         #write_output(output_path, output)
 
-        output_json["what_changed"] = "No changes detected"
         print("No changes detected.")
-        return
+        return "No changes detected"
 
     # Build prompt
     prompt = build_prompt(changes_text)
@@ -202,6 +201,11 @@ def prepare_file_pairs(old_files, new_files):
         for path in old_files
     }
 
+    new_map = {
+        os.path.basename(path): path
+        for path in new_files
+    }
+
     # Iterate over new files
     for new_file in new_files:
         filename = os.path.basename(new_file)
@@ -211,6 +215,14 @@ def prepare_file_pairs(old_files, new_files):
             "old": old_map.get(filename, None)
         })
 
+    # Include old-only files (deleted from target commit)
+    for filename, old_file in old_map.items():
+        if filename not in new_map:
+            result.append({
+                "new": None,
+                "old": old_file
+            })
+
     print(f"Prepared {len(result)} old:new file pairs.")
     return result
 
@@ -218,7 +230,14 @@ def prepare_file_pairs(old_files, new_files):
 # Extract remaining properties of the JSON output
 def extract_remaining_properties(new_file, old_file, product_name):
     output_json = {}
-    
+
+    if old_file and not new_file:
+        output_json["tag"] = "deleted"
+        output_json["title"] = extract_title(old_file)
+        output_json["link"] = get_base_url(product_name)
+        output_json["what_changed"] = "Article was removed in the target commit."
+        return output_json
+
     output_json["tag"] = "updated" if old_file else "added"
     if new_file:
         new_file_lower = new_file.lower()
@@ -258,36 +277,45 @@ def prepare_output_json_new():
     except (json.JSONDecodeError, TypeError) as e:
         raise ValueError(f"SOURCE_RESULT must be valid JSON: {e}") from e
     
-    # Extract git diff data - handle both old array format and new nested format
-    if isinstance(payload, list):
-        # Old format: array of objects
-        data = payload[0]
-    elif "gitDiff" in payload:
-        # New format: object with nested gitDiff
-        data = payload["gitDiff"]
-    else:
-        # Fallback: treat payload as data directly
-        data = payload 
-    
-    #Extract common properties
-    source_name = data.get("name")
-    commit_id = data.get("TargetCommit") or data.get("targetCommit")
-    product_name = detect_product_name(data.get("exportedNewFiles", data.get("ExportedNewFiles", []))[0])
-    print("Common properties extracted")
+    entries = payload if isinstance(payload, list) else [payload]
 
-    new_files = data.get("exportedNewFiles", data.get("ExportedNewFiles", []))
-    old_files = data.get("exportedOldFiles", data.get("ExportedOldFiles", []))
+    for entry in entries:
+        # Handle both nested and flat formats
+        data = entry.get("gitDiff") if isinstance(entry, dict) and "gitDiff" in entry else entry
+        if not isinstance(data, dict):
+            continue
 
-    old_new_file_pairs = prepare_file_pairs(old_files, new_files)
+        # Extract common properties
+        source_name = data.get("name") or entry.get("name")
+        commit_id = (
+            data.get("TargetCommit")
+            or data.get("targetCommit")
+            or entry.get("TargetCommit")
+            or entry.get("targetCommit")
+        )
 
-    for pair in old_new_file_pairs:
-        print(f"Extracting remaining properties for pair - New: {pair['new']}, Old: {pair['old']}")
-        output_json = extract_remaining_properties(pair["new"], pair["old"], product_name)
-        output_json["source_name"] = source_name
-        output_json["commit_id"] = commit_id
-        output_json["product_name"] = product_name
-        output_json_array.append(output_json)
-        print("Extracted remaining properties and appended to output array")
+        new_files = data.get("exportedNewFiles", data.get("ExportedNewFiles", []))
+        old_files = data.get("exportedOldFiles", data.get("ExportedOldFiles", []))
+
+        product_path = None
+        if new_files:
+            product_path = new_files[0]
+        elif old_files:
+            product_path = old_files[0]
+
+        product_name = detect_product_name(product_path) if product_path else None
+        print("Common properties extracted")
+
+        old_new_file_pairs = prepare_file_pairs(old_files, new_files)
+
+        for pair in old_new_file_pairs:
+            print(f"Extracting remaining properties for pair - New: {pair['new']}, Old: {pair['old']}")
+            output_json = extract_remaining_properties(pair["new"], pair["old"], product_name)
+            output_json["source_name"] = source_name
+            output_json["commit_id"] = commit_id
+            output_json["product_name"] = product_name
+            output_json_array.append(output_json)
+            print("Extracted remaining properties and appended to output array")
 
     return output_json_array
     
