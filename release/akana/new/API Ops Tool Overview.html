@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" class="_Skins_Side_Navigation_Akana" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../" data-mc-has-content-body="True" data-mc-toc-path="API Ops" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../Skins/Favicons/browserconfig.xml" xmlns="http://www.w3.org/1999/xhtml" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" /><title>API Ops Tool Overview</title>
+        <!-- The following scrlipt implements the Top button on long pages -->
+        <!-- End Top button script -->
+        <!-- Removes highlight from URL -->
+        <!-- End highlight script -->
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../Resources/Stylesheets/perforce.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.previous-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.next-topic-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(#ffffff, #ececec);
+}
+
+.needs-pie
+{
+	behavior: url('../../Resources/Scripts/PIE-no-motw.htc');
+}
+
+</style>
+        <link href="../../Resources/Stylesheets/akanadoc.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <link rel="icon" sizes="36x36" href="../../Skins/Favicons/favicon-akana.png" />
+        <script src="../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script>/* <![CDATA[ */        /*The following script overrides topic title in browser tab*/
+			document.title = Akana Documentation | 2026.1;
+		/* ]]> */</script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/scroll-button.js">
+        </script>
+        <script type="text/javascript">
+			///*<![CDATA[*/
+			document.addEventListener("DOMContentLoaded", function () {
+			document.body.addEventListener("click", function (e) {
+			var el = e.target;
+			// Traverse up to the button in case an inner div was clicked
+			while (el && el !== document.body) {
+			if (el.classList && el.classList.contains("remove-highlight-button")) {
+			// Delay to let the skin remove highlights
+			setTimeout(function () {
+			if (window.location.search.includes("Highlight=")) {
+			var url = new URL(window.location.href);
+			url.searchParams.delete("Highlight");
+			window.history.replaceState({}, document.title, url.pathname + url.search + url.hash);
+			}
+			}, 50);
+			break;
+			}
+			el = el.parentNode;
+			}
+			});
+			});
+		///*]]>*/</script>
+        <script>/* <![CDATA[ */        /*The following script implements Google Analytics for two Akana accounts*/
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-333097-1', 'auto');
+			ga('create', 'UA-111257570-9', 'auto', 'akanaDocsTracker');
+			ga('send', 'pageview');
+			ga('akanaDocsTracker.send', 'pageview');
+		/* ]]> */</script>
+        <script type="text/javascript" defer="defer" src="../../Resources/Scripts/scroll-button.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="complementary" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-accordion vertical menu off-canvas-list" data-accordion-menu="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" aria-label="Main navigation and search" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-width: 1279px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../Home.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="How can we help you?" />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="All Files" role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">All Files</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div id="skin-heading">Akana Documentation | 2026.1</div>
+                                    <script type="text/javascript">/*<![CDATA[*/
+            $(document).ready(function(){
+            $("#skin-heading").appendTo("div.logo-wrapper"); 
+            });
+        /*]]>*/</script>
+                                    <div class="buttons popup-container clearfix topicToolbarProxy _Skins_TopicToolbar mc-component nocontent" style="mc-topic-toolbar-items: ExpandAll Print RemoveHighlight NextTopic PreviousTopic Forward Back;">
+                                        <div class="button-group-container-left">
+                                            <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all sections" title="Expand all sections" data-state1-title="Expand all sections">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie remove-highlight-button" title="Remove highlighting">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie print-button" title="Print">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Print">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie previous-topic-button" title="Go to previous topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate previous">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button class="button needs-pie next-topic-button" title="Go to next topic" disabled="true">
+                                                <div>
+                                                    <div role="img" class="button-icon-wrapper" aria-label="Navigate next">
+                                                        <div class="button-icon"> </div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="nocontent">
+                                        <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="3" data-mc-toc="True">
+                                        </div>
+                                    </div>
+                                    <div class="sidenav-content">
+                                        <div role="main" id="mc-main-content">
+                                            <div class="documentation" xmlns="http://www.w3.org/1999/xhtml">
+                                                <div class="concept"><a name="aanchor7" xmlns=""></a>
+                                                    <MadCap:concept term="AO;Exclude_API" />
+                                                </div>
+                                                <h1 id="top" data-mc-autonum=""><span class="autonumber" xmlns=""><span></span></span>API Ops Tool Overview</h1>
+                                                <p xmlns="http://www.w3.org/1999/xhtml">Akana API Ops provides automation capabilities for promoting Akana API gateway and developer portal configurations across environments. This tool enables teams to replicate and promote API-related assets between environments such as <b>development, testing, staging, and production</b> in a consistent and repeatable manner.</p>
+                                                <p xmlns="http://www.w3.org/1999/xhtml">Designed to support modern <b xmlns="http://www.w3.org/1999/xhtml">API operations and DevOps workflows</b>, the tool can be executed directly from the command line or integrated into existing <b xmlns="http://www.w3.org/1999/xhtml">CI/CD pipelines</b> to automate API promotion during deployment processes.</p>
+                                                <p xmlns="">
+                                                    <img src="images/api_ops_tool_overview.png" xmlns="http://www.w3.org/1999/xhtml" style="width: 656px;height: 338px;" />
+                                                </p>
+                                                <h2 xmlns="http://www.w3.org/1999/xhtml">Key capabilities:</h2>
+                                                <ul xmlns="http://www.w3.org/1999/xhtml">
+                                                    <li xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">Environment promotion</b>: Enables promotion of API gateway configurations from one environment to another, ensuring consistent configurations across environments.</li>
+                                                    <li xmlns="">
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">CLI-based interface</b>: Runs as an independent <b xmlns="http://www.w3.org/1999/xhtml">command-line utility</b>, allowing operators and DevOps engineers to execute promotion commands directly from terminal environments.</p>
+                                                    </li>
+                                                    <li xmlns="">
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">CI/CD pipeline integration</b>: Integrates easily with common <b xmlns="http://www.w3.org/1999/xhtml">CI/CD platforms</b>, enabling automated API promotion as part of deployment workflows.</p>
+                                                    </li>
+                                                    <li xmlns="">
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b>Import strategy</b>: Supports multiple import strategies that control how assets are created or updated in the target environment. By default, the tool matches assets by using the asset name as the primary identifier. For some asset types, additional fields (such as organization) are also used for matching.</p>
+                                                        <ul xmlns="http://www.w3.org/1999/xhtml" style="list-style-type: circle;">
+                                                            <li xmlns=""><b xmlns="http://www.w3.org/1999/xhtml">Create</b>: Imports assets only if they do not already exist in the target environment.</li>
+                                                            <li xmlns=""><b xmlns="http://www.w3.org/1999/xhtml">CreateOrFail</b>: Imports assets only if they do not exist in the target environment. If an asset already exists, the import fails.</li>
+                                                            <li xmlns=""><b xmlns="http://www.w3.org/1999/xhtml">CreateOrUpdate</b>: Creates new assets if they do not exist and updates existing assets if they are already present.</li>
+                                                        </ul>
+                                                    </li>
+                                                    <li xmlns="">
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">Interpolation support for environment-specific configurations</b>: Provides <b>interpolation capabilities</b> that allow dynamic modification of configuration values during promotion. This ensures that environment-specific settings are adjusted automatically without requiring manual changes.</p>
+                                                    </li>
+                                                    <li xmlns="">
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">Sensitive data encryption</b>:  Allows encryption of sensitive information used by the tool.</p>
+                                                    </li>
+                                                    <li>
+                                                        <p xmlns="http://www.w3.org/1999/xhtml"><b xmlns="http://www.w3.org/1999/xhtml">Export and import tool usage logs (observability)</b>: Includes <b>logging and observability</b> capabilities for export and import operations, enabling teams to track and analyze API promotion activities.</p>
+                                                    </li>
+                                                    <ul style="list-style-type: circle;">
+                                                        <li>
+                                                            <p xmlns="http://www.w3.org/1999/xhtml"><b>Execution logs in JSON format</b>: Export and Import execution logs are generated in JSON format. These logs capture information about who executed which API Ops commands on which assets, along with their execution status.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p><b xmlns="http://www.w3.org/1999/xhtml">Trace logs</b>: Generates trace logs to help troubleshoot issues.</p>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                                <h2>Benefits: </h2>
+                                                <ul>
+                                                    <li>Enables <b>API infrastructure-as-code practices</b> and reduces <b>manual configuration errors</b>.</li>
+                                                    <li>Supports <b>DevOps and GitOps deployment models</b>, simplifying <b>API lifecycle management</b>.</li>
+                                                    <li>Ensures <b>consistent API configuration</b> across environments.</li>
+                                                    <li>Supports <b>environment-specific customization through interpolation</b>.</li>
+                                                </ul>
+                                                <h2>Supported assets for promotion</h2>
+                                                <p>The tool supports exporting and importing the <b xmlns="http://www.w3.org/1999/xhtml">latest version</b> of the following assets:</p>
+                                                <ul>
+                                                    <li>REST API configurations including basic fields, avatar image, specifications, documentations, licenses, scopes, OAuth settings, Outbound Identity, PKI keys and certificates, header propagation settings, physical service client timeout, and all types of contracts.</li>
+                                                    <li>Apps configuration including basic fields, oauth profile, and certificates.</li>
+                                                    <li>Scope and Licenses.</li>
+                                                    <li>Standard and custom policies used with REST APIs.</li>
+                                                    <li>Users</li>
+                                                </ul>
+                                                <p>For more information, see <a href="../supported_assets/asset_repo_structure.htm#supported_assets" xmlns="http://www.w3.org/1999/xhtml">Supported assets</a>.</p>
+                                                <h2>Compatibility with the Akana Platform</h2>
+                                                <p>The API Ops tool compatibility is validated starting with Akana version 2025.1.2.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript" src="../../Resources/google-code-prettify/prettify.js">
+                                    </script>
+                                    <script type="text/javascript">/* <![CDATA[ */
+    // hookup prettify
+    $("pre.programlisting").each(function () {
+      var $this = $(this),
+          lang = $this.attr("lang");
+      if (lang) {
+        $this.addClass("lang-" + lang);
+       // if (lang !== "bash") 
+		// {
+        $this.addClass("prettyprint");
+        //}
+      }
+    });
+    window.prettyPrint();
+    /* ]]> */</script>
+                                    <!-- The following script adds a resize bar to the navigation pane -->
+                                    <script type="text/javascript" src="../../Resources/Scripts/nav-resize.js">
+                                    </script>
+                                    <!-- End resize bar script -->
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

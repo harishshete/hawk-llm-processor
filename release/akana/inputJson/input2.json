@@ -1,0 +1,26 @@
+{
+  "name": "basic-git",
+  "type": "git",
+  "targetCommit": "caf620e31dd50bd21290dcb27fd50deb1c92634d",
+  "sharedVolumeName": "hawk-volume",
+  "sharedVolumePath": "/opt/hawk-data/",
+  "gitDiff": {
+    "name": "basic-git",
+    "baseCommit": "e9a6fc221c7f32e3d9393a34170f3fe9860038d0",
+    "targetCommit": "caf620e31dd50bd21290dcb27fd50deb1c92634d",
+    "changedFiles": [
+      "content/Perfecto/manual-testing/Inject_an_image.htm"
+    ],
+    "deletedFiles": [],
+    "exportedFiles": [
+      "/opt/hawk-data/basic-git/caf620e31dd50bd21290dcb27fd50deb1c92634d/content/Perfecto/manual-testing/New/Inject_an_image.htm",
+      "/opt/hawk-data/basic-git/caf620e31dd50bd21290dcb27fd50deb1c92634d/content/Perfecto/manual-testing/Old/Inject_an_image.htm"
+    ],
+    "exportedOldFiles": [
+      "/opt/hawk-data/basic-git/caf620e31dd50bd21290dcb27fd50deb1c92634d/content/Perfecto/manual-testing/Old/Inject_an_image.htm"
+    ],
+    "exportedNewFiles": [
+      "/opt/hawk-data/basic-git/caf620e31dd50bd21290dcb27fd50deb1c92634d/content/Perfecto/manual-testing/New/Inject_an_image.htm"
+    ]
+  }
+}

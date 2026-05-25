@@ -3,6 +3,7 @@ import requests
 
 def push_to_db(data):
     print("Pushing processed documents to the database...")
+    print("API_SERVER", os.getenv("API_SERVER"))
     api_server = os.getenv("API_SERVER", "hawk-apiserver-svc:3000")
     url = f"http://{api_server}/api/document/create"
     headers = {

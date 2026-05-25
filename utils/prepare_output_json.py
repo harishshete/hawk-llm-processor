@@ -2,7 +2,7 @@ import requests
 import os
 import json
 from pathlib import Path
-from utils.get_base_url import (detect_product_name,get_base_url,get_base_url_release_notes)
+from utils.get_base_url import (detect_product_name,get_base_url,get_base_url_release_notes,get_article_url)
 from utils.html_parser import extract_title, extract_sections
 from utils.section_diff import compare_sections
 from utils.prompt_builder import build_prompt,build_prompt_for_new_article
@@ -234,7 +234,7 @@ def extract_remaining_properties(new_file, old_file, product_name):
     if old_file and not new_file:
         output_json["tag"] = "deleted"
         output_json["title"] = extract_title(old_file)
-        output_json["link"] = get_base_url(product_name)
+        output_json["link"] = "No Link" # We don't have link to the deleted article
         output_json["what_changed"] = "Article was removed in the target commit."
         return output_json
 
@@ -250,9 +250,17 @@ def extract_remaining_properties(new_file, old_file, product_name):
 
         if contains_release:
             output_json["tag"] = "release_notes"
-            output_json["link"] = get_base_url_release_notes(product_name)
+            get_article_urll = get_article_url(new_file, product_name,True)
+            if get_article_urll:
+                output_json["link"] = get_article_urll
+            else:
+                output_json["link"] = get_base_url_release_notes(product_name)
         else:
-            output_json["link"] = get_base_url(product_name)
+            get_article_urll = get_article_url(new_file, product_name,False)
+            if get_article_urll:
+                output_json["link"] = get_article_urll
+            else:
+                output_json["link"] = get_base_url(product_name)
         
     
     if not old_file:

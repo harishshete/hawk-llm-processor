@@ -9,3 +9,23 @@
         "product_name": "akana"
     }
 ]
+
+
+
+https://help.perfecto.io/perfecto-help
+"/opt/hawk-data/basic-git/caf620e31dd50bd21290dcb27fd50deb1c92634d/content/Perfecto/manual-testing/Old/Inject_an_image.htm",
+
+
+https://help.perfecto.io/perfecto-help
+
+take path after commit id : /content/Perfecto/manual-testing/New/Inject_an_image.htm
+
+Remove "New" or "Old" from the path : /content/Perfecto/manual-testing/Inject_an_image.htm
+
+Append the path to the base URL : https://help.perfecto.io/perfecto-help/content/Perfecto/manual-testing/Inject_an_image.htm
+
+
+https://help.perfecto.io/perfecto-help/content/perfecto/manual-testing/inject_an_image.htm
+
+
+
