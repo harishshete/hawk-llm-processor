@@ -1,5 +1,5 @@
 APP_NAME := hawk-llm-processor
-VERSION := 0.1.1
+VERSION := 0.1.2
 REGISTRY := immnan
 IMAGE := $(REGISTRY)/hawk-llm
 
