@@ -3,8 +3,15 @@ import time
 import requests
 
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
-OLLAMA_TIMEOUT_SECONDS = int(os.getenv("OLLAMA_TIMEOUT_SECONDS", "180"))
-OLLAMA_MAX_RETRIES = int(os.getenv("OLLAMA_MAX_RETRIES", "2"))
+# Backward compatible timeout behavior:
+# - If OLLAMA_READ_TIMEOUT_SECONDS is set, it is used.
+# - Else, if legacy OLLAMA_TIMEOUT_SECONDS is set, that value is used as read timeout.
+# - Else, default to a longer read timeout for larger prompts/models.
+OLLAMA_CONNECT_TIMEOUT_SECONDS = int(os.getenv("OLLAMA_CONNECT_TIMEOUT_SECONDS", "10"))
+OLLAMA_READ_TIMEOUT_SECONDS = int(
+    os.getenv("OLLAMA_READ_TIMEOUT_SECONDS", os.getenv("OLLAMA_TIMEOUT_SECONDS", "900"))
+)
+OLLAMA_MAX_RETRIES = int(os.getenv("OLLAMA_MAX_RETRIES", "3"))
 
 
 def _extract_error_details(response):
@@ -38,7 +45,7 @@ def call_llm(prompt):
                     "prompt": prompt,
                     "stream": False
                 },
-                timeout=OLLAMA_TIMEOUT_SECONDS
+                timeout=(OLLAMA_CONNECT_TIMEOUT_SECONDS, OLLAMA_READ_TIMEOUT_SECONDS)
             )
 
             if response.status_code >= 500:
