@@ -2,3 +2,5 @@
 requirements.txt
 utils/write_to_local.py__pycache__/
 *.pyc
+kubernetes/hftoken.yaml
+.DS_Store
