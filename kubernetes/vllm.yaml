@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mistral-7b
+  name: qwen-3
   namespace: hawk
   labels:
-    app: mistral-7b
+    app: qwen-3
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mistral-7b
+      app: qwen-3
   template:
     metadata:
       labels:
-        app: mistral-7b
+        app: qwen-3
     spec:
       volumes:
       - name: cache-volume
         persistentVolumeClaim:
-          claimName: mistral-7b
+          claimName: qwen-3
       # vLLM needs to access the host's shared memory for tensor parallel inference.
       - name: shm
         emptyDir:
@@ -29,34 +29,34 @@ spec:
         operator: "Exists"
         effect: "NoSchedule"          
       containers:
-      - name: mistral-7b
+      - name: qwen-3
         image: vllm/vllm-openai:latest
         imagePullPolicy: IfNotPresent
         command: ["/bin/sh", "-c"]
         args:
         - >-
-          vllm serve mistralai/Mistral-7B-Instruct-v0.3
-          --trust-remote-code
-          --gpu-memory-utilization 0.95
-          --max-model-len 4096
+          vllm serve Qwen/Qwen2.5-7B-Instruct
+          --gpu-memory-utilization 0.85
+          --port 8000
+          --tensor-parallel-size 1
         env:
         - name: HF_TOKEN
           valueFrom:
             secretKeyRef:
               name: hf-token-secret
               key: token
+        - name: PYTORCH_CUDA_ALLOC_CONF
+          value: "expandable_segments:True"
         ports:
         - containerPort: 8000
         resources:
           limits:
-            cpu: "2"
-            memory: 16Gi
-            ephemeral-storage: 40Gi
+            cpu: "4"
+            memory: "16Gi"
             nvidia.com/gpu: "1"
           requests:
-            cpu: "1"
-            memory: 8Gi
-            ephemeral-storage: 30Gi
+            cpu: "2"
+            memory: "8Gi"
             nvidia.com/gpu: "1"
         volumeMounts:
         - mountPath: /root/.cache/huggingface
@@ -67,22 +67,23 @@ spec:
           httpGet:
             path: /health
             port: 8000
-          periodSeconds: 10
+          initialDelaySeconds: 30
+          periodSeconds: 5
           timeoutSeconds: 10
-          failureThreshold: 90
+          failureThreshold: 600
         livenessProbe:
           httpGet:
             path: /health
             port: 8000
-          initialDelaySeconds: 10
-          periodSeconds: 10
+          initialDelaySeconds: 60
+          periodSeconds: 30
           timeoutSeconds: 10
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /health
             port: 8000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 45
           periodSeconds: 10
           timeoutSeconds: 10
           failureThreshold: 3

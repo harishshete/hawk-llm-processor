@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mistral-7b
+  name: qwen-3
   namespace: hawk
 spec:
   accessModes:
