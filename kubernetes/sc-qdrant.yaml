@@ -1,0 +1,10 @@
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: qdrant-ssd-storage
+provisioner: pd.csi.storage.gke.io
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: pd-ssd # Use pd-extreme or hyperdisk-balanced for production workloadsk a
