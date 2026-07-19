@@ -10,6 +10,10 @@ spec:
       protocol: HTTP
       port: 80
       hostname: infer.hawk-llm.ai
+    - name: grpc
+      protocol: HTTP
+      port: 6334
+      hostname: infer.hawk-llm.ai
 #    - name: https
 #      protocol: HTTPS
 #      port: 443
@@ -31,7 +35,43 @@ spec:
     - matches:
         - path:
             type: PathPrefix
+            value: /api/v1/rag
+      backendRefs:
+        - name: rag-gateway-service
+          port: 80  
+    - matches:
+        - path:
+            type: PathPrefix
             value: /
       backendRefs:
         - name: qwen-3-service
           port: 80
+    - matches: 
+        - path: 
+            type: PathPrefix
+            value: /q1
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
+      backendRefs:
+        - name: qdrant-service
+          port: 6333
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: GRPCRoute
+metadata:
+  name: hawk-qdrant-grpc-route
+  namespace: hawk
+spec:
+  parentRefs:
+    - name: hawk-ai-gateway
+      sectionName: grpc
+  hostnames:
+    - infer.hawk-llm.ai
+  rules:
+    - backendRefs:
+        - name: qdrant-service
+          port: 6334
